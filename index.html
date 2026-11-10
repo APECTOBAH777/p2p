@@ -1,87 +1,86 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10131b">
-  <title>North — P2P</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10151d">
+<title>North P2P — Demo</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div class="app">
   <header class="topbar">
-    <div class="brand"><div class="brand-mark">N</div><div><b>NORTH</b><small>P2P EXCHANGE</small></div></div>
-    <button class="avatar" id="avatarBtn" aria-label="Профиль">U</button>
+    <div class="brand"><div class="brandmark">N</div><div><b>NORTH</b><small>P2P DEMO</small></div></div>
+    <div class="online"><i></i><span id="onlineCount">12</span> в демо</div>
   </header>
-
   <main>
-    <section class="page active" id="homePage">
-      <div class="welcome"><div><span class="eyebrow">ПОНЕДЕЛЬНИК · РЫНОК</span><h1>Добро пожаловать<span class="accent">.</span></h1><p>Управляй заявками и следи за рынком.</p></div></div>
-      <div class="hero-card">
-        <div class="hero-top"><span>БЫСТРЫЙ ОБМЕН</span><span class="live-dot">● Доступно</span></div>
-        <div class="exchange-row"><div><small>ОТДАЁШЬ</small><strong>₽ RUB</strong></div><span class="swap-icon">⇄</span><div><small>ПОЛУЧАЕШЬ</small><strong>USD</strong></div></div>
-        <button class="primary-btn" data-go="trade">Перейти к обмену <span>↗</span></button>
-      </div>
-      <div class="section-head"><div><span class="eyebrow">ОБЗОР</span><h2>Рынок</h2></div><span class="muted-pill">RUB</span></div>
-      <div class="market-list">
-        <div class="market-item"><div class="coin coin-usd">$</div><div class="market-name"><b>Доллар США</b><small>USD / RUB</small></div><strong>83,00 ₽</strong><span class="change positive">+0,4%</span></div>
-        <div class="market-item"><div class="coin coin-eur">€</div><div class="market-name"><b>Евро</b><small>EUR / RUB</small></div><strong>90,20 ₽</strong><span class="change negative">−0,2%</span></div>
-        <div class="market-item"><div class="coin coin-btc">₿</div><div class="market-name"><b>Bitcoin</b><small>BTC / RUB</small></div><strong>5 420 000 ₽</strong><span class="change positive">+1,8%</span></div>
-      </div>
-      <p class="footnote">Показатели приведены для ознакомления и не являются биржевыми котировками.</p>
-    </section>
-
-    <section class="page" id="tradePage">
-      <div class="page-heading"><span class="eyebrow">ТОРГОВАЯ ПЛОЩАДКА</span><h1>Трейдинг<span class="accent">.</span></h1><p>Практикуйся на виртуальных позициях.</p></div>
-      <div class="trade-card">
-        <div class="trade-card-head"><div><small>ИНСТРУМЕНТ</small><h2>BTC / RUB</h2></div><span class="muted-pill">Учебный рынок</span></div>
-        <div class="price">5 420 000 ₽ <span class="change positive">+1,8%</span></div>
-        <div class="chart"><svg viewBox="0 0 600 150" preserveAspectRatio="none" aria-label="Учебный график"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8b7cff" stop-opacity=".3"/><stop offset="1" stop-color="#8b7cff" stop-opacity="0"/></linearGradient></defs><path d="M0 115 C35 108 42 80 75 91 S120 115 150 78 S205 95 235 64 S285 83 315 50 S365 74 395 44 S445 63 475 31 S535 55 600 12 L600 150 L0 150Z" fill="url(#fill)"/><path d="M0 115 C35 108 42 80 75 91 S120 115 150 78 S205 95 235 64 S285 83 315 50 S365 74 395 44 S445 63 475 31 S535 55 600 12" fill="none" stroke="#9b8cff" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <div class="chart-labels"><span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span></div>
-        <div class="trade-actions"><button class="buy-btn" id="longBtn">LONG <span>↗</span></button><button class="sell-btn" id="shortBtn">SHORT <span>↘</span></button></div>
-      </div>
-      <div class="section-head"><div><span class="eyebrow">ТВОЯ АКТИВНОСТЬ</span><h2>Позиции</h2></div></div>
-      <div class="empty-state" id="positions"><div class="empty-icon">⌁</div><b>Пока нет открытых позиций</b><span>Открой учебную позицию, чтобы она появилась здесь.</span></div>
-    </section>
-
-    <section class="page" id="walletPage">
-      <div class="page-heading"><span class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</span><h1>Кошелёк<span class="accent">.</span></h1><p>Основная валюта счёта — российский рубль.</p></div>
+    <section class="page active" id="home">
+      <div class="welcome"><div class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</div><h1>Добро пожаловать,<br><span id="welcomeName">Гость</span></h1><p>Ваш обзор виртуального счёта и активности.</p></div>
       <div class="balance-card">
-        <div class="balance-top"><span>ДОСТУПНЫЙ БАЛАНС</span><span class="wallet-badge">RUB</span></div>
-        <div class="balance-amount"><span id="balance">15 000</span><i>₽</i></div>
-        <div class="balance-caption">Виртуальный баланс симулятора</div>
-        <button class="primary-btn" id="depositBtn">Пополнить <span>＋</span></button>
+        <div class="balance-head"><span>ДЕМО-БАЛАНС</span><div class="wallet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v15H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M4 7h13.5A2.5 2.5 0 0 1 20 9.5V12h-5a2 2 0 0 0 0 4h5"/><path d="M15 14h.01"/></svg></div></div>
+        <div class="balance" id="balance">25 000 ₽</div><div class="balance-sub">Виртуальные средства · не имеют денежной стоимости</div>
+        <div class="balance-actions"><button class="primary" data-go="wallet">Пополнить демо-баланс</button><button class="ghost" data-go="market">Открыть рынок</button></div>
       </div>
-      <div class="wallet-note"><span class="note-icon">ⓘ</span><span>Это учебный кошелёк: пополнения и операции не перемещают реальные деньги. Баланс 15 000 ₽ создан для практики.</span></div>
-      <div class="section-head"><div><span class="eyebrow">ОПЕРАЦИИ</span><h2>История</h2></div></div>
-      <div class="empty-state compact" id="history"><div class="empty-icon">↗</div><b>Операций пока нет</b><span>Здесь будут отображаться действия в симуляторе.</span></div>
+      <div class="section-title"><div><span class="eyebrow">ОБЗОР</span><h2>Ваша активность</h2></div><span class="pill">DEMO</span></div>
+      <div class="stats-grid">
+        <div class="stat"><small>Сделки</small><b id="statDeals">0</b><span>всего</span></div>
+        <div class="stat"><small>Результат</small><b id="statProfit">0 ₽</b><span>виртуально</span></div>
+        <div class="stat"><small>Успешность</small><b id="statRate">—</b><span>закрытых сделок</span></div>
+      </div>
+      <div class="notice"><b>Демонстрационная среда</b><p>Заявки, участники, курсы, онлайн и пополнения здесь сгенерированы для тестирования интерфейса. Реальных пользователей и платежей нет.</p></div>
     </section>
 
-    <section class="page" id="profilePage">
-      <div class="page-heading"><span class="eyebrow">АККАУНТ</span><h1>Профиль<span class="accent">.</span></h1></div>
-      <div class="profile-card"><div class="profile-avatar" id="profileAvatar">U</div><div><h2 id="profileName">Пользователь</h2><p id="profileHandle">@telegram_user</p><span class="verified-tag">● Telegram</span></div></div>
-      <div class="section-head"><div><span class="eyebrow">ТВОИ РЕЗУЛЬТАТЫ</span><h2>Статистика</h2></div></div>
-      <div class="stats-grid">
-        <div class="stat-card"><small>СДЕЛКИ</small><b id="statDeals">0</b><span>Всего открыто</span></div>
-        <div class="stat-card"><small>ЗАКРЫТЫЕ</small><b id="statClosed">0</b><span>Завершено</span></div>
-        <div class="stat-card"><small>УСПЕШНОСТЬ</small><b id="statWin">—</b><span>Учебный результат</span></div>
-        <div class="stat-card"><small>АКТИВНОСТЬ</small><b id="statDays">1 день</b><span>В приложении</span></div>
+    <section class="page" id="market">
+      <div class="page-heading"><div class="eyebrow">P2P ПЛОЩАДКА</div><h1>Рынок</h1><p>Виртуальные предложения от демо-профилей.</p></div>
+      <div class="market-tabs"><button class="selected" data-filter="all">Все</button><button data-filter="buy">Покупка</button><button data-filter="sell">Продажа</button></div>
+      <div class="quote-panel"><div class="quote-head"><b>Курсы рынка</b><span class="live-dot">● симуляция</span></div><div id="quotes" class="quotes"></div><small class="muted">Учебные значения меняются автоматически и не являются рыночными котировками.</small></div>
+      <div class="section-title"><div><span class="eyebrow">ОБЪЯВЛЕНИЯ</span><h2>Предложения P2P</h2></div><span class="muted" id="offerCount">6 заявок</span></div>
+      <div id="offers" class="offers"></div>
+    </section>
+
+    <section class="page" id="wallet">
+      <div class="page-heading"><div class="eyebrow">СЧЁТ</div><h1>Кошелёк</h1><p>Только тестовые начисления без списания денег.</p></div>
+      <div class="balance-card compact"><span class="eyebrow">ТЕКУЩИЙ ДЕМО-БАЛАНС</span><div class="balance" id="walletBalance">25 000 ₽</div><div class="balance-sub">Виртуальные RUB</div></div>
+      <div class="panel">
+        <h2>Пополнение демо-счёта</h2><p class="muted">Выберите условный способ начисления.</p>
+        <div class="switch"><button class="selected" data-method="rub">Рубли ₽</button><button data-method="stars">Stars ⭐</button></div>
+        <label for="depositAmount" id="depositLabel">Сумма в виртуальных рублях</label>
+        <input id="depositAmount" type="number" min="1" step="1" value="100">
+        <div class="conversion" id="conversion">Будет начислено: 100 ₽</div>
+        <div class="notice slim"><b>Не является оплатой</b><p>Кнопка не открывает платёж и не списывает рубли или Telegram Stars. Курс 1 ⭐ = 1 000 виртуальных ₽ — условный параметр симулятора.</p></div>
+        <button class="primary full" id="depositBtn">Начислить виртуальные средства</button>
       </div>
-      <div class="settings-row"><span>Валюта интерфейса</span><b>RUB ₽</b></div>
-      <div class="settings-row"><span>Тип аккаунта</span><b>Telegram</b></div>
+      <div class="panel"><h2>История операций</h2><div id="transactions" class="transactions"><p class="muted">Операций пока нет.</p></div></div>
+    </section>
+
+    <section class="page" id="profile">
+      <div class="page-heading"><div class="eyebrow">АККАУНТ</div><h1>Профиль</h1></div>
+      <div class="profile-card"><div class="avatar" id="avatar">Г</div><div><h2 id="profileName">Гость</h2><p id="profileHandle">@demo_user</p><span class="pill">ДЕМО-ПРОФИЛЬ</span></div></div>
+      <div class="profile-tabs"><button class="selected" data-profiletab="stats">Статистика</button><button data-profiletab="friends">Друзья</button></div>
+      <div id="profileStats" class="profile-content">
+        <div class="stats-grid">
+          <div class="stat"><small>Закрытые сделки</small><b id="pDeals">0</b></div>
+          <div class="stat"><small>Условный результат</small><b id="pProfit">0 ₽</b></div>
+          <div class="stat"><small>Активность</small><b>Сегодня</b><span>локальная сессия</span></div>
+        </div>
+        <div class="panel"><h2>Последняя активность</h2><div id="activity" class="transactions"><p class="muted">Пока нет активности.</p></div></div>
+      </div>
+      <div id="friendsPanel" class="profile-content hidden">
+        <div class="panel"><h2>Друзья</h2><p class="muted">Поиск работает только по встроенному списку демонстрационных профилей. Настоящие Telegram-аккаунты приложение не ищет.</p>
+          <label for="friendSearch">Имя пользователя</label><input id="friendSearch" placeholder="например, @alex_demo">
+          <button class="primary full" id="friendSearchBtn">Найти демо-профиль</button><div id="friendResult"></div>
+        </div>
+        <div class="panel"><h2>Ваш список</h2><div id="friendList"><p class="muted">Пока никого нет.</p></div></div>
+      </div>
     </section>
   </main>
-
-  <nav class="tabbar">
-    <button class="tab active" data-page="homePage"><span>⌂</span><small>Главная</small></button>
-    <button class="tab" data-page="tradePage"><span>⌁</span><small>Трейдинг</small></button>
-    <button class="tab" data-page="walletPage"><span>▣</span><small>Кошелёк</small></button>
-    <button class="tab" data-page="profilePage"><span>◉</span><small>Профиль</small></button>
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-page="home"><span>⌂</span>Главная</button>
+    <button class="nav-item" data-page="market"><span>▥</span>Рынок</button>
+    <button class="nav-item" data-page="wallet"><span>▱</span>Кошелёк</button>
+    <button class="nav-item" data-page="profile"><span>◉</span>Профиль</button>
   </nav>
-
-  <div class="modal-backdrop" id="depositModal"><div class="modal"><div class="modal-grabber"></div><button class="modal-close" data-close>×</button><span class="eyebrow">КОШЕЛЁК</span><h2>Пополнение</h2><p>Выбери сумму для виртуального баланса.</p><label for="depositAmount">Сумма, ₽</label><input id="depositAmount" type="number" min="1" step="1" value="1000"><button class="primary-btn full" id="confirmDeposit">Пополнить баланс <span>→</span></button><small class="modal-hint">Тестовая операция без реального платежа.</small></div></div>
-  <div class="toast" id="toast"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
