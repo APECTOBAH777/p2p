@@ -34,9 +34,9 @@
     <header class="topbar">
       <div class="ticker-strip" id="tickerStrip"></div>
       <div class="top-actions">
-        <div class="balance-chip"><small>Демо-баланс</small><strong id="topBalance">₽ 1 250 730.50</strong></div>
+        <div class="balance-chip"><small>Демо-баланс</small><strong id="topBalance">₽ 100 000.00</strong></div>
         <button class="icon-btn" id="notifications" aria-label="Уведомления">♧</button>
-        <button class="user-chip" data-page="profile"><span class="avatar">G</span><span><b>Гость</b><small>Демо-профиль</small></span><span>⌄</span></button>
+        <button class="user-chip" data-page="profile"><span class="avatar" id="topAvatar">G</span><span><b id="topUserName">Гость</b><small id="topUserMeta">Демо-профиль</small></span><span>⌄</span></button>
       </div>
     </header>
 
@@ -48,7 +48,7 @@
         </article>
         <article class="panel portfolio-preview">
           <div class="panel-head"><h3>Мой портфель</h3><button class="text-btn" data-page="portfolio">Подробнее →</button></div>
-          <small class="muted">Общая демо-стоимость</small><div class="big-number" id="homePortfolio">₽ 1 250 730.50</div>
+          <small class="muted">Общая стоимость портфеля</small><div class="big-number" id="homePortfolio">₽ 100 000.00</div>
           <div class="profit-line">+ ₽ 12 540.20 <span>(+1.02%) за 24 ч</span></div>
           <div class="portfolio-visual"><div class="donut"></div><div class="legend"><span><i class="dot orange"></i> RUB <b>52%</b></span><span><i class="dot purple"></i> BTC <b>23%</b></span><span><i class="dot blue"></i> ETH <b>15%</b></span><span><i class="dot teal"></i> Другое <b>10%</b></span></div></div>
         </article>
@@ -74,18 +74,18 @@
       <div class="page-title"><div><div class="eyebrow">DEMO TERMINAL</div><h1>Торговый терминал</h1><p>Виртуальные сделки с учебными котировками. Не является реальной биржей.</p></div><span class="live-pill">● ДЕМО-КОТИРОВКИ</span></div>
       <div class="trading-layout">
         <section class="panel chart-panel">
-          <div class="chart-top"><div><select id="tradeAsset" class="asset-select"><option value="BTC">BTC / RUB</option><option value="ETH">ETH / RUB</option><option value="TON">TON / RUB</option><option value="SOL">SOL / RUB</option><option value="USDT">USDT / RUB</option></select><div class="chart-price" id="tradePrice">₽ 6 341 280</div><div class="profit-line" id="tradeChange">+1.72% сегодня</div></div><div class="chart-tools"><div class="tabs compact" id="chartIntervals"><button class="tab active" data-interval="1H">1Ч</button><button class="tab" data-interval="4H">4Ч</button><button class="tab" data-interval="1D">1Д</button><button class="tab" data-interval="1W">1Н</button></div><button class="outline-btn" id="chartType">Свечи</button></div></div>
+          <div class="chart-top"><div><select id="tradeAsset" class="asset-select"><option value="BTC">BTC / RUB</option><option value="ETH">ETH / RUB</option><option value="TON">TON / RUB</option><option value="SOL">SOL / RUB</option><option value="USDT">USDT / RUB</option></select><div class="chart-price" id="tradePrice">₽ 6 341 280</div><div class="profit-line" id="tradeChange">+1.72% сегодня</div></div><div class="chart-tools"><div class="tabs compact" id="chartIntervals"><button class="tab active" data-interval="5S">5 сек</button><button class="tab" data-interval="10S">10 сек</button><button class="tab" data-interval="20S">20 сек</button><button class="tab" data-interval="1M">1 мин</button></div><button class="outline-btn" id="chartType">Свечи</button></div></div>
           <div class="chart-wrap"><canvas id="priceChart" aria-label="Демо-график цены"></canvas></div>
           <div class="chart-foot"><span>График сгенерирован симулятором</span><span id="chartUpdated">Обновлено сейчас</span></div>
         </section>
-        <aside class="panel order-panel"><h3>Новая демо-сделка</h3><label>Направление</label><div class="direction-toggle"><button class="direction active" data-side="buy">Купить</button><button class="direction" data-side="sell">Продать</button></div><label for="tradeAmount">Количество в рублях</label><div class="input-wrap"><span>₽</span><input id="tradeAmount" type="number" min="100" step="100" value="10000"></div><div class="quick-amounts"><button data-amount="1000">1 000</button><button data-amount="5000">5 000</button><button data-amount="10000">10 000</button><button data-amount="25000">25 000</button></div><div class="order-info"><span>Ориентировочно</span><b id="estimatedQty">0.00158 BTC</b><span>Комиссия симулятора</span><b>0 ₽</b></div><button class="btn btn-orange btn-full" id="placeTrade">Подтвердить демо-сделку</button><p class="tiny-note">Операция изменит только виртуальный баланс и учебный портфель.</p></aside>
+        <aside class="panel order-panel"><h3>Новая демо-сделка</h3><label>Направление</label><div class="direction-toggle"><button class="direction active" data-side="above">Выше</button><button class="direction" data-side="below">Ниже</button></div><label for="tradeAmount">Сумма сделки в рублях</label><div class="input-wrap"><span>₽</span><input id="tradeAmount" type="number" min="100" step="100" value="10000"></div><div class="quick-amounts"><button data-amount="1000">1 000</button><button data-amount="5000">5 000</button><button data-amount="10000">10 000</button><button data-amount="25000">25 000</button></div><div class="order-info"><span>Ориентировочно</span><b id="estimatedQty">0.00158 BTC</b><span>Комиссия симулятора</span><b>0 ₽</b></div><button class="btn btn-orange btn-full" id="placeTrade">Подтвердить демо-сделку</button><p class="tiny-note">Операция изменит только виртуальный баланс и учебный портфель.</p></aside>
       </div>
       <section class="panel history-panel"><div class="panel-head"><h3>История демо-операций</h3><button class="text-btn" id="clearHistory">Очистить</button></div><div id="tradeHistory" class="empty-state">Пока нет операций. Сделайте первую тренировочную сделку.</div></section>
     </section>
 
     <section class="page" id="page-portfolio">
       <div class="page-title"><div><div class="eyebrow">YOUR DEMO ASSETS</div><h1>Портфель</h1><p>Баланс, активы и история симулятора.</p></div><span class="live-pill">ВИРТУАЛЬНЫЕ СРЕДСТВА</span></div>
-      <div class="stats-grid"><div class="panel stat-card"><small>Доступный баланс</small><strong id="portfolioCash">₽ 1 250 730.50</strong><span class="muted">Демо-рубли</span></div><div class="panel stat-card"><small>Стоимость активов</small><strong id="assetValue">₽ 0</strong><span class="muted">По учебным котировкам</span></div><div class="panel stat-card"><small>Всего операций</small><strong id="operationCount">0</strong><span class="muted">В этой сессии</span></div></div>
+      <div class="stats-grid"><div class="panel stat-card"><small>Доступный баланс</small><strong id="portfolioCash">₽ 100 000.00</strong><span class="muted">Демо-рубли</span></div><div class="panel stat-card"><small>Стоимость активов</small><strong id="assetValue">₽ 0</strong><span class="muted">По учебным котировкам</span></div><div class="panel stat-card"><small>Всего операций</small><strong id="operationCount">0</strong><span class="muted">В этой сессии</span></div></div>
       <section class="panel"><div class="panel-head"><h3>Мои активы</h3><span class="muted">Обновляется автоматически</span></div><div id="holdings" class="empty-state">Пока активов нет. Перейдите в торговый терминал.</div></section>
     </section>
 
@@ -103,13 +103,14 @@
     </section>
 
     <section class="page" id="page-friends">
-      <div class="page-title"><div><div class="eyebrow">COMMUNITY</div><h1>Друзья</h1><p>Демо-профили и таблица достижений.</p></div></div>
-      <div class="panel"><div class="panel-head"><h3>Участники симулятора</h3><span class="muted">Вымышленные профили</span></div><div id="friendsList"></div></div>
+      <div class="page-title"><div><div class="eyebrow">TELEGRAM COMMUNITY</div><h1>Друзья</h1><p>Найдите игрока по Telegram username и отправьте заявку в друзья.</p></div></div>
+      <section class="panel friends-search-panel"><div class="panel-head"><h3>Поиск игрока</h3><span class="muted">Поиск подключённых игроков</span></div><div class="friends-search"><input class="search-input" id="friendSearch" placeholder="@username или имя пользователя"><button class="btn btn-orange" id="friendSearchBtn">Найти</button></div><div id="friendSearchResults" class="friends-results"></div></section>
+      <div class="panel"><div class="panel-head"><h3>Мои друзья</h3><span class="muted">Игроки и заявки</span></div><div id="friendsList"></div></div>
     </section>
 
     <section class="page" id="page-profile">
       <div class="page-title"><div><div class="eyebrow">ACCOUNT</div><h1>Профиль</h1><p>Ваша статистика в учебном симуляторе.</p></div></div>
-      <div class="profile-layout"><section class="panel profile-card"><div class="profile-avatar">G</div><h2>Гость</h2><span class="muted">Участник демо-площадки</span><div class="profile-worth" id="profileWorth">₽ 1 250 730.50</div><small class="muted">Виртуальное состояние</small></section><section class="panel"><div class="panel-head"><h3>Моя статистика</h3></div><div class="profile-stat"><span>Проведено операций</span><b id="profileOps">0</b></div><div class="profile-stat"><span>Активов в портфеле</span><b id="profileAssets">0</b></div><div class="profile-stat"><span>Предметов коллекции</span><b id="profileItems">0</b></div><div class="profile-stat"><span>Уровень</span><b>Новичок · 1</b></div></section></div>
+      <div class="profile-layout"><section class="panel profile-card"><div class="profile-avatar" id="profileAvatar">G</div><h2 id="profileName">Гость</h2><span class="muted" id="profileMeta">Участник демо-площадки</span><div class="profile-worth" id="profileWorth">₽ 100 000.00</div><small class="muted">Виртуальное состояние</small></section><section class="panel"><div class="panel-head"><h3>Моя статистика</h3></div><div class="profile-stat"><span>Проведено операций</span><b id="profileOps">0</b></div><div class="profile-stat"><span>Активов в портфеле</span><b id="profileAssets">0</b></div><div class="profile-stat"><span>Предметов коллекции</span><b id="profileItems">0</b></div><div class="profile-stat"><span>Уровень</span><b>Новичок · 1</b></div></section></div>
       <section class="panel owned-panel"><div class="panel-head"><h3>Моя коллекция</h3><button class="text-btn" data-page="store">Открыть маркет →</button></div><div id="ownedItems" class="empty-state">Коллекция пока пуста.</div></section>
     </section>
   </main>
@@ -123,6 +124,7 @@
   <div class="modal" id="modalBox"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div>
 </div>
 <div class="toast" id="toast"></div>
-<script src="./app.js?v=8" defer></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="./app.js?v=9" defer></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "name": "bybit-market-simulator",
+  "version": "9.0.0",
+  "private": true,
+  "description": "Telegram Mini App backend for the BYBIT Market Simulator demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
