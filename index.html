@@ -1,83 +1,128 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090d18"><title>ByBit — Market Simulator Demo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=7"><script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>
-/* Critical fallback: keeps the page readable even if the external stylesheet is delayed. */
-html{background:#090d18;color:#eef3fb}body{margin:0;background:#090d18;color:#eef3fb;font-family:Arial,sans-serif}
-.app-shell{max-width:1240px;margin:auto;padding:0 28px 100px}.topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #293247}
-.brand-mark{background:#f6a623!important;color:#17120a!important;border-radius:12px!important;font-weight:900!important}
-.brand b{color:#f6a623}.page{display:none}.page.active{display:block}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:20}
-button,select,input{font:inherit}button{cursor:pointer}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b10">
+  <title>ByBit — Market Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=8">
 </head>
 <body>
 <div class="app-shell">
-<header class="topbar"><div class="brand"><span class="brand-mark">B</span><div><b>ByBit</b><small>MARKET SIMULATOR · DEMO</small></div></div><div class="top-right"><span class="demo-pill"><i></i> НЕОФИЦИАЛЬНЫЙ ДЕМО-ПРОЕКТ</span><div class="top-avatar" id="topAvatar">G</div></div></header>
-<main>
-<section id="home" class="page active">
-<div class="welcome"><div><div class="eyebrow">ПОНЕДЕЛЬНИК · ВАШ ТРЕНИРОВОЧНЫЙ ТЕРМИНАЛ</div><h1>Добро пожаловать,<br><span id="welcomeName">Трейдер</span></h1><p>Изучайте рынки, тестируйте решения и собирайте виртуальные активы.</p></div><div class="welcome-orb">✦</div></div>
-<div class="portfolio-hero"><div><div class="muted-label">ОБЩАЯ СТОИМОСТЬ ПОРТФЕЛЯ</div><div class="big-balance" id="totalValue">250 000 ₽</div><div class="gain" id="totalChange">+0,00% <span>за всё время</span></div></div><div class="hero-chart"><canvas id="miniPortfolio" width="420" height="150"></canvas></div><div class="portfolio-bottom"><span>Свободные средства <b id="cashHome">250 000 ₽</b></span><span>Активы <b id="assetsHome">0 ₽</b></span></div></div>
-<div class="quick-grid"><button class="quick-card" data-go="market"><span class="quick-icon violet">⇄</span><b>P2P рынок</b><small>Объявления и сделки</small></button><button class="quick-card" data-go="trading"><span class="quick-icon mint">⌁</span><b>Терминал</b><small>Графики и портфель</small></button><button class="quick-card" data-go="shop"><span class="quick-icon amber">◇</span><b>Маркет</b><small>Коллекция и имущество</small></button><button class="quick-card" data-go="profile"><span class="quick-icon blue">◉</span><b>Профиль</b><small>Ваш прогресс</small></button></div>
-<div class="section-head"><div><div class="eyebrow">ОБЗОР</div><h2>Ваш прогресс</h2></div><span class="live-label"><i></i> Обновляется</span></div>
-<div class="metric-grid"><div class="metric-card"><small>Сделки</small><b id="homeTrades">0</b><span>в симуляторе</span></div><div class="metric-card"><small>Результат</small><b id="homePnl">0 ₽</b><span>виртуальный P/L</span></div><div class="metric-card"><small>Уровень</small><b id="homeLevel">1</b><span id="homeXp">0 XP</span></div></div>
-<div class="notice"><span>ⓘ</span><div><b>Учебная среда</b><p>Все балансы, котировки, пользователи, объявления и операции здесь виртуальные. Реальные деньги и платежи не используются.</p></div></div>
-</section>
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page="home"><span class="brand-mark">B</span><span>BYB<span class="brand-i">I</span>T</span></a>
+    <nav class="side-nav">
+      <button class="nav-item active" data-page="home"><span>⌂</span>Главная</button>
+      <button class="nav-item" data-page="market"><span>▧</span>Рынок</button>
+      <button class="nav-item" data-page="trading"><span>⌁</span>Торговля</button>
+      <button class="nav-item" data-page="portfolio"><span>▣</span>Портфель</button>
+      <button class="nav-item" data-page="p2p"><span>⇄</span>Рынок P2P</button>
+      <button class="nav-item" data-page="store"><span>◇</span>Маркет</button>
+      <button class="nav-item" data-page="friends"><span>♧</span>Друзья</button>
+      <button class="nav-item" data-page="profile"><span>◎</span>Профиль</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="bonus-card"><div class="gift">🎁</div><b>Ежедневный бонус</b><small>Тренируйтесь и получайте виртуальные баллы</small><button class="btn btn-orange btn-full" id="dailyBonus">Забрать бонус</button></div>
+      <div class="demo-note">ДЕМО-РЕЖИМ<br><span>Все балансы и сделки виртуальные</span></div>
+    </div>
+  </aside>
 
-<section id="market" class="page">
-<div class="page-heading"><div class="eyebrow">COMMUNITY EXCHANGE</div><h1>P2P <span>маркет</span></h1><p>Тестовые объявления участников. Выберите предложение и оформите виртуальную сделку.</p></div>
-<div class="market-summary"><div><small>Активных объявлений</small><b id="offerCount">12</b></div><div><small>Обновление ленты</small><b id="refreshTimer">60 сек</b></div><div><small>Режим</small><b class="green-text">Симуляция</b></div></div>
-<div class="quote-strip" id="marketQuotes"></div>
-<div class="toolbar"><div class="filter-tabs"><button class="selected" data-offer-filter="all">Все</button><button data-offer-filter="sell">Продают</button><button data-offer-filter="buy">Покупают</button></div><select id="marketAsset"><option value="all">Все активы</option><option>USDT</option><option>BTC</option><option>ETH</option><option>TON</option></select></div>
-<div id="offers" class="offer-list"></div>
-</section>
+  <main class="main-area">
+    <header class="topbar">
+      <div class="ticker-strip" id="tickerStrip"></div>
+      <div class="top-actions">
+        <div class="balance-chip"><small>Демо-баланс</small><strong id="topBalance">₽ 1 250 730.50</strong></div>
+        <button class="icon-btn" id="notifications" aria-label="Уведомления">♧</button>
+        <button class="user-chip" data-page="profile"><span class="avatar">G</span><span><b>Гость</b><small>Демо-профиль</small></span><span>⌄</span></button>
+      </div>
+    </header>
 
-<section id="trading" class="page">
-<div class="page-heading"><div class="eyebrow">PAPER TRADING TERMINAL</div><h1>Рыночный <span>терминал</span></h1><p>Тренируйтесь работать с виртуальным портфелем на изменяющихся учебных котировках.</p></div>
-<div class="terminal-layout">
-<div class="terminal-main">
-<div class="instrument-bar"><div class="instrument-select"><div class="coin-icon" id="coinIcon">₿</div><div><select id="tradeAsset"><option value="BTC">Bitcoin / RUB</option><option value="ETH">Ethereum / RUB</option><option value="TON">Toncoin / RUB</option><option value="USDT">Tether / RUB</option><option value="USD">US Dollar / RUB</option><option value="EUR">Euro / RUB</option></select><small id="assetTicker">BTC · КРИПТОВАЛЮТА</small></div></div><div class="price-block"><b id="livePrice">6 250 000 ₽</b><span id="priceDelta" class="up">+0,42%</span></div></div>
-<div class="chart-toolbar"><div class="chart-type"><button class="active" data-chart="candle">Свечи</button><button data-chart="line">Линия</button></div><div class="timeframes"><button data-tf="1m">1м</button><button class="active" data-tf="5m">5м</button><button data-tf="15m">15м</button><button data-tf="1h">1ч</button></div></div>
-<div class="chart-wrap"><canvas id="mainChart" width="1000" height="510"></canvas><div class="chart-watermark">ByBit <span>SIMULATOR</span></div></div>
-<div class="chart-legend"><span><i class="legend-green"></i> Рост</span><span><i class="legend-red"></i> Снижение</span><span id="chartUpdated">Учебные данные · обновление каждую секунду</span></div>
+    <section class="page active" id="page-home">
+      <div class="hero-grid">
+        <article class="hero-card">
+          <div class="hero-copy"><div class="eyebrow">BYBIT · MARKET SIMULATOR</div><h1>Торгуйте. Изучайте.<br><em>Развивайтесь.</em></h1><p>Тренируйтесь на виртуальном рынке, изучайте графики и собирайте собственный портфель.</p><button class="btn btn-orange" data-page="trading">Открыть терминал <span>→</span></button></div>
+          <div class="hero-art"><div class="orb">₿</div><div class="cityline"></div><div class="hero-person">◢</div></div>
+        </article>
+        <article class="panel portfolio-preview">
+          <div class="panel-head"><h3>Мой портфель</h3><button class="text-btn" data-page="portfolio">Подробнее →</button></div>
+          <small class="muted">Общая демо-стоимость</small><div class="big-number" id="homePortfolio">₽ 1 250 730.50</div>
+          <div class="profit-line">+ ₽ 12 540.20 <span>(+1.02%) за 24 ч</span></div>
+          <div class="portfolio-visual"><div class="donut"></div><div class="legend"><span><i class="dot orange"></i> RUB <b>52%</b></span><span><i class="dot purple"></i> BTC <b>23%</b></span><span><i class="dot blue"></i> ETH <b>15%</b></span><span><i class="dot teal"></i> Другое <b>10%</b></span></div></div>
+        </article>
+        <article class="panel quick-panel"><div class="panel-head"><h3>Быстрые действия</h3></div><div class="quick-grid">
+          <button class="quick-action orange" data-page="portfolio"><span>＋</span>Баланс</button><button class="quick-action purple" data-page="trading"><span>↗</span>Торговля</button><button class="quick-action green" data-page="p2p"><span>⇄</span>P2P</button><button class="quick-action blue" data-page="market"><span>⌁</span>Рынок</button><button class="quick-action pink" data-page="store"><span>◇</span>Маркет</button><button class="quick-action teal" data-page="friends"><span>♧</span>Друзья</button>
+        </div></article>
+      </div>
+      <div class="section-heading"><h2>Рынок</h2><button class="text-btn" data-page="market">Все активы →</button></div>
+      <div class="asset-grid" id="homeAssets"></div>
+      <div class="home-lower">
+        <section class="panel p2p-preview"><div class="panel-head"><h3>P2P рынок</h3><button class="text-btn" data-page="p2p">Все предложения →</button></div><div id="homeOffers"></div></section>
+        <section class="panel news-panel"><div class="panel-head"><h3>Обновления</h3><span class="live-pill">DEMO</span></div><div class="news-item"><b>Добавлен тренировочный P2P</b><small>Покупайте виртуальные активы у демо-продавцов</small></div><div class="news-item"><b>Графики и портфель</b><small>Изучайте динамику и историю своих действий</small></div><div class="news-item"><b>Новый каталог</b><small>Собирайте коллекцию виртуальных предметов</small></div></section>
+      </div>
+    </section>
+
+    <section class="page" id="page-market">
+      <div class="page-title"><div><div class="eyebrow">MARKET OVERVIEW</div><h1>Рынок активов</h1><p>Демонстрационные котировки для тренировки и изучения графиков.</p></div><span class="live-pill">● СИМУЛЯЦИЯ</span></div>
+      <div class="market-toolbar"><div class="tabs" id="marketTabs"><button class="tab active" data-filter="all">Все</button><button class="tab" data-filter="crypto">Крипто</button><button class="tab" data-filter="fiat">Валюты</button></div><input class="search-input" id="assetSearch" placeholder="Поиск актива..."></div>
+      <div class="market-table panel"><div class="table-row table-head"><span>Актив</span><span>Цена</span><span>Изменение 24ч</span><span>График</span><span></span></div><div id="marketRows"></div></div>
+    </section>
+
+    <section class="page" id="page-trading">
+      <div class="page-title"><div><div class="eyebrow">DEMO TERMINAL</div><h1>Торговый терминал</h1><p>Виртуальные сделки с учебными котировками. Не является реальной биржей.</p></div><span class="live-pill">● ДЕМО-КОТИРОВКИ</span></div>
+      <div class="trading-layout">
+        <section class="panel chart-panel">
+          <div class="chart-top"><div><select id="tradeAsset" class="asset-select"><option value="BTC">BTC / RUB</option><option value="ETH">ETH / RUB</option><option value="TON">TON / RUB</option><option value="SOL">SOL / RUB</option><option value="USDT">USDT / RUB</option></select><div class="chart-price" id="tradePrice">₽ 6 341 280</div><div class="profit-line" id="tradeChange">+1.72% сегодня</div></div><div class="chart-tools"><div class="tabs compact" id="chartIntervals"><button class="tab active" data-interval="1H">1Ч</button><button class="tab" data-interval="4H">4Ч</button><button class="tab" data-interval="1D">1Д</button><button class="tab" data-interval="1W">1Н</button></div><button class="outline-btn" id="chartType">Свечи</button></div></div>
+          <div class="chart-wrap"><canvas id="priceChart" aria-label="Демо-график цены"></canvas></div>
+          <div class="chart-foot"><span>График сгенерирован симулятором</span><span id="chartUpdated">Обновлено сейчас</span></div>
+        </section>
+        <aside class="panel order-panel"><h3>Новая демо-сделка</h3><label>Направление</label><div class="direction-toggle"><button class="direction active" data-side="buy">Купить</button><button class="direction" data-side="sell">Продать</button></div><label for="tradeAmount">Количество в рублях</label><div class="input-wrap"><span>₽</span><input id="tradeAmount" type="number" min="100" step="100" value="10000"></div><div class="quick-amounts"><button data-amount="1000">1 000</button><button data-amount="5000">5 000</button><button data-amount="10000">10 000</button><button data-amount="25000">25 000</button></div><div class="order-info"><span>Ориентировочно</span><b id="estimatedQty">0.00158 BTC</b><span>Комиссия симулятора</span><b>0 ₽</b></div><button class="btn btn-orange btn-full" id="placeTrade">Подтвердить демо-сделку</button><p class="tiny-note">Операция изменит только виртуальный баланс и учебный портфель.</p></aside>
+      </div>
+      <section class="panel history-panel"><div class="panel-head"><h3>История демо-операций</h3><button class="text-btn" id="clearHistory">Очистить</button></div><div id="tradeHistory" class="empty-state">Пока нет операций. Сделайте первую тренировочную сделку.</div></section>
+    </section>
+
+    <section class="page" id="page-portfolio">
+      <div class="page-title"><div><div class="eyebrow">YOUR DEMO ASSETS</div><h1>Портфель</h1><p>Баланс, активы и история симулятора.</p></div><span class="live-pill">ВИРТУАЛЬНЫЕ СРЕДСТВА</span></div>
+      <div class="stats-grid"><div class="panel stat-card"><small>Доступный баланс</small><strong id="portfolioCash">₽ 1 250 730.50</strong><span class="muted">Демо-рубли</span></div><div class="panel stat-card"><small>Стоимость активов</small><strong id="assetValue">₽ 0</strong><span class="muted">По учебным котировкам</span></div><div class="panel stat-card"><small>Всего операций</small><strong id="operationCount">0</strong><span class="muted">В этой сессии</span></div></div>
+      <section class="panel"><div class="panel-head"><h3>Мои активы</h3><span class="muted">Обновляется автоматически</span></div><div id="holdings" class="empty-state">Пока активов нет. Перейдите в торговый терминал.</div></section>
+    </section>
+
+    <section class="page" id="page-p2p">
+      <div class="page-title"><div><div class="eyebrow">PERSON TO PERSON · DEMO</div><h1>P2P рынок</h1><p>Тренировочные объявления от вымышленных продавцов. Все расчёты виртуальные.</p></div><span class="live-pill">● ДЕМО-ОБЪЯВЛЕНИЯ</span></div>
+      <section class="panel p2p-panel"><div class="p2p-toolbar"><div class="tabs" id="p2pSide"><button class="tab active" data-side="buy">Купить</button><button class="tab" data-side="sell">Продать</button></div><div class="p2p-filters"><select id="p2pAsset"><option>USDT</option><option>BTC</option><option>ETH</option><option>TON</option></select><select id="p2pSort"><option value="best">Рекомендуемые</option><option value="low">Сначала дешевле</option><option value="high">Сначала дороже</option></select><input class="search-input" id="sellerSearch" placeholder="Найти продавца"></div></div>
+        <div class="p2p-table"><div class="p2p-row p2p-head"><span>Продавец</span><span>Цена за ед.</span><span>Доступно</span><span>Лимиты</span><span>Способ</span><span>Действие</span></div><div id="p2pRows"></div></div>
+      </section>
+      <div class="p2p-help"><b>Как работает демо-P2P?</b><span>Выберите объявление, укажите количество, проверьте лимиты и откройте учебный чат. Сделка не отправляет деньги и не связывается с реальными пользователями.</span></div>
+    </section>
+
+    <section class="page" id="page-store">
+      <div class="page-title"><div><div class="eyebrow">VIRTUAL COLLECTION</div><h1>Маркет предметов</h1><p>Собирайте виртуальную коллекцию за демо-рубли.</p></div><span class="live-pill">ИГРОВОЙ КАТАЛОГ</span></div>
+      <div class="market-toolbar"><div class="tabs" id="storeTabs"><button class="tab active" data-category="all">Все</button><button class="tab" data-category="cars">Авто</button><button class="tab" data-category="realty">Недвижимость</button><button class="tab" data-category="style">Стиль</button><button class="tab" data-category="tech">Техника</button></div></div><div class="store-grid" id="storeGrid"></div>
+    </section>
+
+    <section class="page" id="page-friends">
+      <div class="page-title"><div><div class="eyebrow">COMMUNITY</div><h1>Друзья</h1><p>Демо-профили и таблица достижений.</p></div></div>
+      <div class="panel"><div class="panel-head"><h3>Участники симулятора</h3><span class="muted">Вымышленные профили</span></div><div id="friendsList"></div></div>
+    </section>
+
+    <section class="page" id="page-profile">
+      <div class="page-title"><div><div class="eyebrow">ACCOUNT</div><h1>Профиль</h1><p>Ваша статистика в учебном симуляторе.</p></div></div>
+      <div class="profile-layout"><section class="panel profile-card"><div class="profile-avatar">G</div><h2>Гость</h2><span class="muted">Участник демо-площадки</span><div class="profile-worth" id="profileWorth">₽ 1 250 730.50</div><small class="muted">Виртуальное состояние</small></section><section class="panel"><div class="panel-head"><h3>Моя статистика</h3></div><div class="profile-stat"><span>Проведено операций</span><b id="profileOps">0</b></div><div class="profile-stat"><span>Активов в портфеле</span><b id="profileAssets">0</b></div><div class="profile-stat"><span>Предметов коллекции</span><b id="profileItems">0</b></div><div class="profile-stat"><span>Уровень</span><b>Новичок · 1</b></div></section></div>
+      <section class="panel owned-panel"><div class="panel-head"><h3>Моя коллекция</h3><button class="text-btn" data-page="store">Открыть маркет →</button></div><div id="ownedItems" class="empty-state">Коллекция пока пуста.</div></section>
+    </section>
+  </main>
 </div>
-<aside class="order-panel">
-<div class="panel-title"><div><small>НОВАЯ ОПЕРАЦИЯ</small><h3>Ордер</h3></div><span class="paper-tag">PAPER</span></div>
-<div class="side-switch"><button class="active buy-side" data-side="buy">Купить</button><button data-side="sell">Продать</button></div>
-<label>Сумма в рублях</label><div class="amount-input"><input id="orderAmount" type="number" min="100" step="100" value="5000"><span>₽</span></div>
-<div class="quick-amounts"><button data-amount="1000">1 000</button><button data-amount="5000">5 000</button><button data-amount="10000">10 000</button><button data-amount="25000">25 000</button></div>
-<div class="order-info"><div><span>Текущая цена</span><b id="orderPrice">—</b></div><div><span>Примерное количество</span><b id="orderQuantity">—</b></div><div><span>Доступно</span><b id="availableCash">250 000 ₽</b></div></div>
-<button id="placeOrder" class="primary-action">Купить <span>→</span></button>
-<p class="order-disclaimer">Операция выполняется только в виртуальном портфеле. Это не заявка на реальном рынке.</p>
-</aside>
+
+<nav class="mobile-nav">
+  <button class="active" data-page="home"><span>⌂</span>Главная</button><button data-page="market"><span>▧</span>Рынок</button><button data-page="trading"><span>⌁</span>Торговля</button><button data-page="p2p"><span>⇄</span>P2P</button><button data-page="profile"><span>◎</span>Профиль</button>
+</nav>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modalBox"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div>
 </div>
-<div class="section-head"><div><div class="eyebrow">YOUR PORTFOLIO</div><h2>Мои активы</h2></div><span class="subtle" id="portfolioCount">0 позиций</span></div>
-<div class="holdings-card"><div class="holdings-header"><span>Актив</span><span>Количество</span><span>Стоимость</span><span>Результат</span></div><div id="holdings"><div class="empty-state">Пока нет активов. Выберите инструмент и совершите первую учебную покупку.</div></div></div>
-<div class="section-head"><div><div class="eyebrow">ACTIVITY</div><h2>История операций</h2></div></div><div id="tradeHistory" class="history-list"></div>
-</section>
-
-<section id="shop" class="page">
-<div class="page-heading"><div class="eyebrow">LIFESTYLE & COLLECTION</div><h1>Виртуальный <span>маркет</span></h1><p>Собирайте коллекцию автомобилей, недвижимости, аксессуаров и предметов стиля.</p></div>
-<div class="shop-banner"><div><small>ВАША КОЛЛЕКЦИЯ</small><h2>Создайте свой<br>виртуальный мир</h2><p>Покупки списываются только с игрового баланса.</p></div><div class="shop-art">✧</div></div>
-<div class="shop-toolbar"><div class="filter-tabs" id="shopFilters"><button class="selected" data-category="all">Всё</button><button data-category="cars">Авто</button><button data-category="realty">Недвижимость</button><button data-category="style">Стиль</button><button data-category="jewelry">Украшения</button><button data-category="tech">Техника</button></div><div class="shop-balance">Баланс <b id="shopBalance">250 000 ₽</b></div></div>
-<div id="catalog" class="product-grid"></div>
-<div class="section-head"><div><div class="eyebrow">OWNED ITEMS</div><h2>Моя коллекция</h2></div><span class="subtle" id="ownedCount">0 предметов</span></div><div id="inventory" class="inventory-grid"></div>
-</section>
-
-<section id="profile" class="page">
-<div class="page-heading"><div class="eyebrow">ACCOUNT & ACHIEVEMENTS</div><h1>Мой <span>профиль</span></h1></div>
-<div class="profile-cover"><div class="profile-avatar" id="profileAvatar">G</div><div class="profile-main"><h2 id="profileName">Трейдер</h2><span id="profileHandle">@north_member</span><div class="profile-badges"><span>✦ Участник NORTH</span><span>Уровень <b id="profileLevel">1</b></span></div></div><div class="profile-worth"><small>СОСТОЯНИЕ</small><b id="profileWorth">250 000 ₽</b></div></div>
-<div class="profile-tabs"><button class="active" data-profile-tab="overview">Обзор</button><button data-profile-tab="assets">Моё имущество</button><button data-profile-tab="friends">Друзья</button><button data-profile-tab="history">История</button></div>
-<div id="profileOverview"><div class="metric-grid"><div class="metric-card"><small>Баланс</small><b id="profileCash">250 000 ₽</b></div><div class="metric-card"><small>Активы</small><b id="profileAssets">0 ₽</b></div><div class="metric-card"><small>Операции</small><b id="profileTrades">0</b></div></div><div class="section-head"><div><div class="eyebrow">PERFORMANCE</div><h2>Статистика</h2></div></div><div class="metric-grid"><div class="metric-card"><small>Общий результат</small><b id="profilePnl">0 ₽</b></div><div class="metric-card"><small>Предметы</small><b id="profileItems">0</b></div><div class="metric-card"><small>Опыт</small><b id="profileXp">0 XP</b></div></div></div>
-<div id="profileAssetsTab" hidden><div class="section-head"><div><div class="eyebrow">YOUR PROPERTY</div><h2>Активы и имущество</h2></div></div><div id="profileInventory" class="inventory-grid"></div><div id="profileHoldings" class="holdings-card"></div></div>
-<div id="profileFriends" hidden><div class="notice"><span>ⓘ</span><div><b>Демо-сообщество</b><p>Здесь отображаются только вымышленные участники симулятора. Поиск реальных аккаунтов Telegram не выполняется.</p></div></div><div class="friends-grid" id="friendsGrid"></div></div>
-<div id="profileHistory" hidden><div id="profileHistoryList" class="history-list"></div></div>
-</section>
-</main>
-<nav class="bottom-nav"><button class="active" data-page="home"><span>⌂</span><small>Главная</small></button><button data-page="market"><span>⇄</span><small>P2P</small></button><button data-page="trading"><span>⌁</span><small>Терминал</small></button><button data-page="shop"><span>◇</span><small>Маркет</small></button><button data-page="profile"><span>◉</span><small>Профиль</small></button></nav>
-<div id="modalRoot"></div><div id="toast"></div>
-</div><script defer src="./app.js?v=7"></script></body></html>
+<div class="toast" id="toast"></div>
+<script src="./app.js?v=8" defer></script>
+</body>
+</html>
