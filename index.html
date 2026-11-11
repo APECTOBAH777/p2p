@@ -2,14 +2,22 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090d18"><title>NORTH — Market Simulator</title>
+<meta name="theme-color" content="#090d18"><title>ByBit — Market Simulator Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="./styles.css?v=7"><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+/* Critical fallback: keeps the page readable even if the external stylesheet is delayed. */
+html{background:#090d18;color:#eef3fb}body{margin:0;background:#090d18;color:#eef3fb;font-family:Arial,sans-serif}
+.app-shell{max-width:1240px;margin:auto;padding:0 28px 100px}.topbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #293247}
+.brand-mark{background:#f6a623!important;color:#17120a!important;border-radius:12px!important;font-weight:900!important}
+.brand b{color:#f6a623}.page{display:none}.page.active{display:block}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:20}
+button,select,input{font:inherit}button{cursor:pointer}
+</style>
 </head>
 <body>
 <div class="app-shell">
-<header class="topbar"><div class="brand"><span class="brand-mark">N</span><div><b>NORTH</b><small>MARKET SIMULATOR</small></div></div><div class="top-right"><span class="demo-pill"><i></i> DEMO MODE</span><div class="top-avatar" id="topAvatar">G</div></div></header>
+<header class="topbar"><div class="brand"><span class="brand-mark">B</span><div><b>ByBit</b><small>MARKET SIMULATOR · DEMO</small></div></div><div class="top-right"><span class="demo-pill"><i></i> НЕОФИЦИАЛЬНЫЙ ДЕМО-ПРОЕКТ</span><div class="top-avatar" id="topAvatar">G</div></div></header>
 <main>
 <section id="home" class="page active">
 <div class="welcome"><div><div class="eyebrow">ПОНЕДЕЛЬНИК · ВАШ ТРЕНИРОВОЧНЫЙ ТЕРМИНАЛ</div><h1>Добро пожаловать,<br><span id="welcomeName">Трейдер</span></h1><p>Изучайте рынки, тестируйте решения и собирайте виртуальные активы.</p></div><div class="welcome-orb">✦</div></div>
@@ -34,7 +42,7 @@
 <div class="terminal-main">
 <div class="instrument-bar"><div class="instrument-select"><div class="coin-icon" id="coinIcon">₿</div><div><select id="tradeAsset"><option value="BTC">Bitcoin / RUB</option><option value="ETH">Ethereum / RUB</option><option value="TON">Toncoin / RUB</option><option value="USDT">Tether / RUB</option><option value="USD">US Dollar / RUB</option><option value="EUR">Euro / RUB</option></select><small id="assetTicker">BTC · КРИПТОВАЛЮТА</small></div></div><div class="price-block"><b id="livePrice">6 250 000 ₽</b><span id="priceDelta" class="up">+0,42%</span></div></div>
 <div class="chart-toolbar"><div class="chart-type"><button class="active" data-chart="candle">Свечи</button><button data-chart="line">Линия</button></div><div class="timeframes"><button data-tf="1m">1м</button><button class="active" data-tf="5m">5м</button><button data-tf="15m">15м</button><button data-tf="1h">1ч</button></div></div>
-<div class="chart-wrap"><canvas id="mainChart" width="1000" height="510"></canvas><div class="chart-watermark">NORTH <span>SIMULATOR</span></div></div>
+<div class="chart-wrap"><canvas id="mainChart" width="1000" height="510"></canvas><div class="chart-watermark">ByBit <span>SIMULATOR</span></div></div>
 <div class="chart-legend"><span><i class="legend-green"></i> Рост</span><span><i class="legend-red"></i> Снижение</span><span id="chartUpdated">Учебные данные · обновление каждую секунду</span></div>
 </div>
 <aside class="order-panel">
@@ -72,4 +80,4 @@
 </main>
 <nav class="bottom-nav"><button class="active" data-page="home"><span>⌂</span><small>Главная</small></button><button data-page="market"><span>⇄</span><small>P2P</small></button><button data-page="trading"><span>⌁</span><small>Терминал</small></button><button data-page="shop"><span>◇</span><small>Маркет</small></button><button data-page="profile"><span>◉</span><small>Профиль</small></button></nav>
 <div id="modalRoot"></div><div id="toast"></div>
-</div><script src="app.js"></script></body></html>
+</div><script defer src="./app.js?v=7"></script></body></html>
